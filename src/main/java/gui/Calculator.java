@@ -16,7 +16,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 	
 	String number1 = "";
 	String number2 = "";
-	String operator;
+	String operator = "";
 	Text displayText;
 	
 	public Calculator(){
@@ -115,7 +115,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		equals.setOnAction(this);
 		
 		Button reset = new Button("C");
-		gd.add(reset, 0, 4, 2, 1);
+		gd.add(reset, 0, 4, 4, 1);
 		reset.setPrefWidth(215);
 		reset.setOnAction(this);
 		
@@ -127,6 +127,58 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		
 		Button b = (Button) event.getSource();
 		String value = b.getText();
+		String result2 = "";
+
+		
+		if ("0123456789".contains(value)) {
+			if (operator.equals("")) {
+				number1 += value;
+			} else {
+				number2 += value;
+			}
+		} else if ("+-*/".contains(value)) {
+			operator = value;
+		} else if ("=".equals(value)) {
+			if (!number1.isEmpty() && !number2.isEmpty() && operator != null) {
+				double result = 0;
+				double num1 = Double.parseDouble(number1);
+				double num2 = Double.parseDouble(number2);
+	
+				switch (operator) {
+					case "+":
+						result = num1 + num2;
+						result2 = String.valueOf(result);
+						break;
+					case "-":
+						result = num1 - num2;
+						result2 = String.valueOf(result);
+						break;
+					case "*":
+						result = num1 * num2;
+						result2 = String.valueOf(result);
+						break;
+					case "/":
+						if (num2 != 0) {
+							result = num1 / num2;
+							result2 = String.valueOf(result);
+						} else {
+							result2 = "No se puede dividir por 0";
+						}
+						break;
+				}
+	
+				number1 = "";
+				number2 = "";
+				operator = "";
+			}
+		} else if ("C".equals(value)) {
+			number1 = "";
+			number2 = "";
+			operator = "";
+			displayText.setText("");
+		}
+	
+		displayText.setText(number1 + operator + number2 + result2);
 		
 	}
 	

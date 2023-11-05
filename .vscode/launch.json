@@ -16,7 +16,7 @@
             "request": "launch",
             "mainClass": "gui.Calculadora",
             "projectName": "taller-9-java-SamuelOrtizT_b47f25fb",
-            "vmArgs": "--module-path \"C:\\Users\\yepestoro\\OneDrive\\Documentos\\TODO Samuel\\Universidad Samuel\\Semestre III\\Programación Orientada a Objetos --add-modules javafx.controls,javafx.fxml -version"
+            "vmArgs": "--module-path \"C:\\Users\\yepestoro\\OneDrive\\Documentos\\TODO Samuel\\Universidad Samuel\\Semestre III\\Programación Orientada a Objetos\\javafx-sdk-21.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
